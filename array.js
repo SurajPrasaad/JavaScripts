@@ -3,6 +3,7 @@
 // It will ne accessing value using index.
 // Index also start with 0(Zero).
 // There are two way to define array in JavaScript.
+
 let myArray = [1, 2, 3, 4, 5, 6];
 
 let myArray2 = new Array("Apple", "Mango", "Banana", "Papaya");
