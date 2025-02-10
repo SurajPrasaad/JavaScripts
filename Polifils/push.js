@@ -10,6 +10,5 @@ if(!Array.prototype.myPush){
 }
 
 let arr = [1,2,3];
-arr.p
 arr.myPush(60)
 console.log(arr)
