@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI - Body Mass Index Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    
+    <div class="box">
+      <h3>BMI - Calculator</h3>
+      <div class="gender-box">
+        <div class="gender">
+          <input type="radio" id="male-gender" name="gender" />
+          <label for="male-gender">
+            <i class="fa-solid fa-person"></i>
+            <p>Male</p>
+          </label>
+        </div>
+        <div class="gender">
+          <input type="radio" id="female-gender" name="gender" />
+          <label for="female-gender">
+            <i class="fa-solid fa-person-dress"></i>
+            <p>Female</p>
+          </label>
+        </div>
+      </div>
+      <div class="weight">
+        <label>Weight:</label>
+        <div>
+          <input type="radio" id="kg" name="unit-weight" />
+          <label for="kg">Kilogram</label>
+        </div>
+        <div>
+          <input type="radio" id="g" name="unit-weight" />
+          <label for="g">Grams</label>
+        </div>
+      </div>
+      <div class="height">
+        <label>Height:</label>
+        <div>
+          <input type="radio" id="cm" name="unit-height" />
+          <label for="cm">Centimeters</label>
+        </div>
+        <div>
+          <input type="radio" id="m" name="unit-height" />
+          <label for="m">Meters</label>
+        </div>
+      </div>
+      <div class="range-age">
+        <p>Age</p>
+        <input type="range" min="1" max="100" value="25" id="age" />
+        <span id="age-value">25</span> years
+      </div>
+      <div class="measure-box">
+        <div class="measure">
+          <label for="weight">
+            <p>Weight</p>
+          </label>
+          <span id="weight-value">40</span>
+          <div class="btn">
+            <button class="btn-sub-weight"><i class="fa-solid fa-circle-minus"></i></button>
+          <button class="btn-add-weight"><i class="fa-solid fa-circle-plus"></i></button>
+          </div>
+        </div>
+        <div class="measure">
+          <label for="height">
+            Height
+          </label>
+          <p id="height-value">110 <span id="CM">CM</span></p>
+          <div class="btn">
+          <button class="btn-sub-height"><i class="fa-solid fa-circle-minus"></i></button>
+          <button class="btn-add-height"><i class="fa-solid fa-circle-plus"></i></button>
+        </div>
+      
+        </div>
+        <div class="measure">
+          <button id="submit">Submit</button>
+        </div>
+      </div>
+      <div class="result">
+        hii
+      </div>
+    </div>
+  </div>
+<script src="app.js"></script>
+</body>
+
+</html>
