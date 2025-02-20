@@ -13,20 +13,19 @@
 
 <body>
   <div class="container">
-    
-    <div class="box">
+    <div class="box" id="box">
       <h3>BMI - Calculator</h3>
       <div class="gender-box">
         <div class="gender">
-          <input type="radio" id="male-gender" name="gender" />
-          <label for="male-gender">
+          <input type="radio" id="male" name="gender" />
+          <label for="male">
             <i class="fa-solid fa-person"></i>
             <p>Male</p>
           </label>
         </div>
         <div class="gender">
-          <input type="radio" id="female-gender" name="gender" />
-          <label for="female-gender">
+          <input type="radio" id="female" name="gender" />
+          <label for="female">
             <i class="fa-solid fa-person-dress"></i>
             <p>Female</p>
           </label>
@@ -64,7 +63,7 @@
           <label for="weight">
             <p>Weight</p>
           </label>
-          <span id="weight-value">40</span>
+          <span id="weight-value">40</span><span id="KG">KG</span>
           <div class="btn">
             <button class="btn-sub-weight"><i class="fa-solid fa-circle-minus"></i></button>
           <button class="btn-add-weight"><i class="fa-solid fa-circle-plus"></i></button>
@@ -74,7 +73,7 @@
           <label for="height">
             Height
           </label>
-          <p id="height-value">110 <span id="CM">CM</span></p>
+          <span id="height-value">110</span><span id="CM">CM</span>
           <div class="btn">
           <button class="btn-sub-height"><i class="fa-solid fa-circle-minus"></i></button>
           <button class="btn-add-height"><i class="fa-solid fa-circle-plus"></i></button>
@@ -86,10 +85,23 @@
         </div>
       </div>
       <div class="result">
-        hii
+        
       </div>
     </div>
   </div>
+  <div class="container">
+    <div class="box">
+      <p>Results: </p>
+      <div class="result-data">
+        
+      </div>
+      <p>Tips:</p>
+      <div class="result-data1">
+        
+      </div>
+    </div>
+  </div>
+  
 <script src="app.js"></script>
 </body>
 
