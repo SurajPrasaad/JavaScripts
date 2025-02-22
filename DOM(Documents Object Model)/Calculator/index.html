@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+        }
+        .calculator {
+            width: 350px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .display {
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: right;
+            padding: 20px;
+            color: white;
+            overflow: hidden;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .operator {
+            background: #ff9500;
+        }
+        .operator:hover {
+            background: #e08900;
+        }
+        .equal {
+            background: #34c759;
+        }
+        .equal:hover {
+            background: #2aad4a;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="operator">C</button>
+            <button class="operator">⌫</button>
+            <button class="operator">%</button>
+            <button class="operator">÷</button>
+            
+            <button class="value">7</button>
+            <button class="value">8</button>
+            <button class="value">9</button>
+            <button class="operator">*</button>
+            
+            <button class="value">4</button>
+            <button class="value">5</button>
+            <button class="value">6</button>
+            <button class="operator">-</button>
+            
+            <button class="value">1</button>
+            <button class="value">2</button>
+            <button class="value">3</button>
+            <button class="operator">+</button>
+            
+            <button class="value">00</button>
+            <button class="value">0</button>
+            <button class="value">.</button>
+            <button class="operator">=</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
