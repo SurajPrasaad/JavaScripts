@@ -1,26 +1,79 @@
-#bg-changer{
-    width:200px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-#createButton,.button{
-    width: 70px;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+}
+
+
+#bg-changer {
+    width: 220px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+#createButton, .button {
+    width: 90px;
     border: none;
-    border-radius: 8px;
-    background-color: #ccc;
-    padding: 8px;
+    border-radius: 6px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
-#createButton,.button:hover{
+
+#createButton:hover, .button:hover {
     cursor: pointer;
+    background-color: #555;
+    transform: translateY(-2px);
 }
-#allButtons{
-    display: inline-block;
-    align-content: flex-start;
-    width: 300px;
-    height: 200px;
-    border: 2px solid black;
-    background-color: #fff;
-    overflow-y: scroll;
+
+
+#allButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 320px;
+    max-height: 200px;
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    margin-top: 15px;
 }
-#allButtons > button{
-    margin: 8px;
+
+#allButtons > button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ccc;
+    transition: background 0.3s ease;
+}
+
+#allButtons > button:hover {
+    background-color: #ddd;
+}
+
+body {
+    transition: background-color 0.5s ease-in-out;
 }

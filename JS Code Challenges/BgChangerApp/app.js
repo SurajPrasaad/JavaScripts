@@ -1,32 +1,48 @@
-let selectElement = document.getElementById("bg-changer");
-let createButton = document.getElementById("createButton");
-createButton.addEventListener('click',()=>{
-        let allButtons = document.getElementById("allButtons");
-        let buttonCreateElement = document.createElement('button')
-        buttonCreateElement.innerText = selectElement.value;
-        buttonCreateElement.classList.add("button")
-        allButtons.appendChild(buttonCreateElement);
-        let button = document.querySelectorAll("button")
-        button.forEach((e)=>{
-            e.addEventListener('click',(events)=>{
-                let selectedColor = events.target.innerText;
-                document.body.style.backgroundColor = selectedColor
-            })
-        })
-})
+(function () {
+    let selectElement = document.getElementById("bg-changer");
+    let createButton = document.getElementById("createButton");
+    let allButtons = document.getElementById("allButtons");
 
-function colorCreateWithOptions(){
-let colorArray = ["Blue","Brown","Orange","Pink","Red","Green","Purple","Yellow","Grey","White","Coral","Cyan","Gold","Magenta","Olive","Navy","Beige"]
+    function colorCreateWithOptions() {
+        let colorArray = [
+            "Blue", "Brown", "Orange", "Pink", "Red", "Green", 
+            "Purple", "Yellow", "Grey", "White", "Coral", "Cyan", 
+            "Gold", "Magenta", "Olive", "Navy", "Beige"
+        ];
 
-for(let index=0;index<colorArray.length;index++){
-let options = document.createElement('option');
-options.innerText = colorArray[index]
-options.setAttribute("value",colorArray[index]);
-selectElement.appendChild(options)
-}
-}
-let x = colorCreateWithOptions();
-x=null
+        colorArray.forEach(color => {
+            let option = document.createElement('option');
+            option.innerText = color;
+            option.value = color;
+            selectElement.appendChild(option);
+        });
+    }
+
+    function createColorButton(color) {
+        let button = document.createElement('button');
+        button.innerText = color;
+        button.classList.add("button");
+        button.addEventListener('click', function () {
+            document.body.style.backgroundColor = color;
+        });
+        return button;
+    }
+
+    function handleCreateButtonClick() {
+        let selectedColor = selectElement.value;
+        let existingButtons = Array.from(allButtons.children);
+        let isButtonExists = existingButtons.some(button => button.innerText === selectedColor);
+        if (isButtonExists) {
+            alert(`Button for ${selectedColor} already exists!`);
+            return;
+        }
+        let newButton = createColorButton(selectedColor);
+        allButtons.appendChild(newButton);
+    }
+
+    createButton.addEventListener('click', handleCreateButtonClick);
+    colorCreateWithOptions();
+})();
 
 // let options = document.createElement('option');
 // options.getAttribute(null)
