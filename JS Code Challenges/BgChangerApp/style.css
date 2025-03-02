@@ -1,0 +1,26 @@
+#bg-changer{
+    width:200px;
+}
+
+#createButton,.button{
+    width: 70px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ccc;
+    padding: 8px;
+}
+#createButton,.button:hover{
+    cursor: pointer;
+}
+#allButtons{
+    display: inline-block;
+    align-content: flex-start;
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    background-color: #fff;
+    overflow-y: scroll;
+}
+#allButtons > button{
+    margin: 8px;
+}
