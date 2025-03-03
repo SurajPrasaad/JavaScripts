@@ -37,16 +37,18 @@ createTask.addEventListener("click", () => {
     items.appendChild(createElementP);
     createElementP.appendChild(createElementDeleteIcon)
     console.log("Welcome")
+
+    //For Updating Individuals Task
+    let item = document.querySelectorAll(".card");
+    item.forEach((e) =>
+        e.addEventListener("click", (e) => {
+            let updateTaskValue = prompt("Update Task Value ", e.target.textContent);
+            if (updateTaskValue) {
+                e.target.textContent = updateTaskValue;
+            }
+            return false;
+        })
+    );
 });
-// For Updating Task
-let item = document.querySelectorAll(".card");
-item.forEach((e) =>
-    e.addEventListener("click", (e) => {
-        let updateTaskValue = prompt("Update Task Value ", e.target.textContent);
-        if (updateTaskValue) {
-            e.target.textContent = updateTaskValue;
-        }
-        return false;
-    })
-);
+
 
