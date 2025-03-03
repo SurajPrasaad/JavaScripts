@@ -25,18 +25,16 @@ createTask.addEventListener("click", () => {
     createElementDeleteIcon.innerHTML = `<i class="fa-solid fa-delete-left"></i>`;
     createElementDeleteIcon.style.cursor = "pointer";
     createElementDeleteIcon.classList.add("iconClass")
+    if (!taskDescription) return;
+    createElementP.classList.add("card");
+    items.appendChild(createElementP);
+    createElementP.appendChild(createElementDeleteIcon)
 
     //For Deleting Individuals Task
     createElementDeleteIcon.addEventListener("click", () => {
         createElementP.remove();
         console.log("Task Deleted");
     });
-
-    if (!taskDescription) return;
-    createElementP.classList.add("card");
-    items.appendChild(createElementP);
-    createElementP.appendChild(createElementDeleteIcon)
-    console.log("Welcome")
 
     //For Updating Individuals Task
     let item = document.querySelectorAll(".card");
