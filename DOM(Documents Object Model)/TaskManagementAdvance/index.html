@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav-slide">
+        <h4><i class="fa-sharp-duotone fa-solid fa-list-check"></i>Tasks</h4>
+        <h4><i class="fa-sharp-duotone fa-solid fa-kaaba"></i>Kanban Board</h4>
+        <h4><i class="fa-sharp-duotone fa-solid fa-square-caret-down"></i>DropDown</h4>
+    </div>
+    <div class="container">
+        <button id="new-task">New Task</button>
+        <div class="board-container">
+            <div class="board" id="todo-board">
+                <h3><i class="fa-sharp-duotone fa-solid fa-clock"></i>Todo</h3>
+                <div class="card-container">
+                    <div class="card-body" draggable="true">
+                        <p class="title">Update Sale Report<span>#SalesDashboard</span></p>
+                        <p class="desc">Add The latest Services Machines</p>
+                        <p>
+                            <span class="current-date"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i> 30/12/2025</span>
+                            <span id="tags"><i class="fa-sharp-duotone fa-solid fa-tag"></i>Analytics</span>
+                        </p>
+                    </div>
+                    <div class="card-btn">
+                        <button><i class="fa-sharp-duotone fa-solid fa-pencil edit"></i></button>
+                        <button><i class="fa-sharp-duotone fa-solid fa-trash delete"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="board" id="progress-board">
+                <h3><i class="fa-sharp-duotone fa-solid fa-repeat"></i>In Progress</h3>
+            </div>
+            <div class="board" id="success-board">
+                <h3><i class="fa-sharp-duotone fa-solid fa-circle-check"></i>Done</h3>
+            </div>
+            <div class="board" id="archived-board">
+                <h3><i class="fa-sharp-duotone fa-solid fa-box-archive"></i>Archived</h3>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
