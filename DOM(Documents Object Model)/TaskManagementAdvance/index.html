@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="nav-slide">
-        <h4><i class="fa-sharp-duotone fa-solid fa-list-check"></i>Tasks</h4>
-        <h4><i class="fa-sharp-duotone fa-solid fa-kaaba"></i>Kanban Board</h4>
-        <h4><i class="fa-sharp-duotone fa-solid fa-square-caret-down"></i>DropDown</h4>
+        <h4 class="nav-item active"><i class="fa-solid fa-list-check"></i> Tasks</h4>
+        <h4 class="nav-item"><i class="fa-solid fa-columns"></i> Kanban Board</h4>
+        <h4 class="nav-item dropdown-toggle">
+            <i class="fa-solid fa-filter"></i> Filter 
+            <i class="fa-solid fa-caret-down"></i>
+        </h4>
+    
+        <!-- Search & Sort Dropdown -->
+        <div class="dropdown-menu">
+            <input type="text" id="search-task" placeholder="🔍 Search tasks...">
+            <select id="sort-tasks">
+                <option value="all">All Tasks</option>
+                <option value="latest">Latest</option>
+                <option value="oldest">Oldest</option>
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+            </select>
+        </div>
     </div>
+    
     <div class="container">
         <button id="new-task">New Task</button>
         <div class="board-container">
@@ -23,7 +43,23 @@
                         <p class="title">Update Sale Report<span>#SalesDashboard</span></p>
                         <p class="desc">Add The latest Services Machines</p>
                         <p>
-                            <span class="current-date"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i> 30/12/2025</span>
+                            <span class="current-date"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i>
+                                30/12/2025</span>
+                            <span id="tags"><i class="fa-sharp-duotone fa-solid fa-tag"></i>Analytics</span>
+                        </p>
+                    </div>
+                    <div class="card-btn">
+                        <button><i class="fa-sharp-duotone fa-solid fa-pencil edit"></i></button>
+                        <button><i class="fa-sharp-duotone fa-solid fa-trash delete"></i></button>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card-body" draggable="true">
+                        <p class="title">Update Sale Report<span>#SalesDashboard</span></p>
+                        <p class="desc">Add The latest Services Machines</p>
+                        <p>
+                            <span class="current-date"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i>
+                                30/12/2025</span>
                             <span id="tags"><i class="fa-sharp-duotone fa-solid fa-tag"></i>Analytics</span>
                         </p>
                     </div>
@@ -44,6 +80,61 @@
             </div>
         </div>
     </div>
+    <div class="task-form">
+        <div class="form-container">
+            <h3>Create New Task <span class="close">X</span></h3>
+            <form>
+                <div class="input-group">
+                    <label for="task-title">Task Title</label>
+                    <input type="text" id="task-title" placeholder="Enter task title" required>
+                </div>
+    
+                <div class="input-group">
+                    <label for="task-desc">Task Description</label>
+                    <textarea id="task-desc" placeholder="Enter task description" required></textarea>
+                </div>
+    
+                <div class="input-group">
+                    <label for="task-tags">Task Tags</label>
+                    <div class="select-container">
+                        <select id="task-tags">
+                            <option value="analytics">Analytics</option>
+                            <option value="development">Development</option>
+                            <option value="design">Design</option>
+                            <option value="testing">Testing</option>
+                        </select>
+                        <input type="text" id="new-tag" placeholder="Add new tag">
+                        <button type="button" id="add-tag">+</button>
+                    </div>
+                </div>
+    
+                <div class="input-group">
+                    <label for="task-labels">Task Labels</label>
+                    <div class="select-container">
+                        <select id="task-labels">
+                            <option value="urgent">Urgent</option>
+                            <option value="important">Important</option>
+                            <option value="low-priority">Low Priority</option>
+                        </select>
+                        <input type="text" id="new-label" placeholder="Add new label">
+                        <button type="button" id="add-label">+</button>
+                    </div>
+                </div>
+    
+                <div class="input-group">
+                    <label for="task-date">Task Date</label>
+                    <input type="date" id="task-date" required>
+                </div>
+    
+                <div class="btn-group">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <script src="app.js"></script>
 </body>
+
 </html>

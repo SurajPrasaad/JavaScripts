@@ -29,3 +29,33 @@ function attachDragEvents(target) {
         target.style.display = "block";
     });
 }
+
+const newTaskButton = document.getElementById("new-task");
+    const taskForm = document.querySelector(".task-form");
+    const closeButton = document.querySelector(".close");
+    const cancelButton = document.querySelector(".task-form button:last-of-type");
+    const container = document.querySelector(".container");
+
+    function showTaskForm() {
+        taskForm.classList.add("show");
+        container.style.display = "none"; 
+    }
+
+    function closeTaskForm() {
+        taskForm.classList.remove("show");
+        setTimeout(() => {
+            taskForm.style.display = "none";
+            container.style.display = "block";
+        }, 300);
+    }
+
+    newTaskButton.addEventListener("click", function () {
+        taskForm.style.display = "block";
+        setTimeout(showTaskForm, 10);
+    });
+
+    closeButton.addEventListener("click", closeTaskForm);
+    cancelButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeTaskForm();
+    });
