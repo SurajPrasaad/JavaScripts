@@ -1,61 +1,127 @@
-const allBoards = document.querySelectorAll(".board");
-const allCards = document.querySelectorAll('.card-container');
+    const newTaskButton = document.getElementById("new-task");
+    const taskForm = document.querySelector(".task-form");
+    const closeForm = document.querySelector(".close");
+    const taskTitle = document.getElementById("task-title");
+    const taskDesc = document.getElementById("task-desc");
+    const taskTags = document.getElementById("task-tags");
+    const taskLabels = document.getElementById("task-labels");
+    const newTagInput = document.getElementById("new-tag");
+    const newLabelInput = document.getElementById("new-label");
+    const addTagButton = document.getElementById("add-tag");
+    const addLabelButton = document.getElementById("add-label");
+    const taskDate = document.getElementById("task-date1");
+    const saveBtn = document.querySelector(".save-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    const boards = document.querySelectorAll(".board");
+    let draggedTask = null;
 
-console.log(allCards);
-allCards.forEach((card) => attachDragEvents(card));
-console.log(allCards);
-console.log(allBoards);
+    newTaskButton.addEventListener("click", () => {
+        taskForm.style.display = "block";
+    });
 
-allBoards.forEach((board) => {
-    board.addEventListener("dragover", (event) => {
+    closeForm.addEventListener("click", () => {
+        taskForm.style.display = "none";
+    });
 
-        const flyingElement = document.querySelector('.flying');
-        if (flyingElement) { 
-            console.log('Flying Elements:', flyingElement.className);
-            console.log("kuch to mere uper se gya", board);
-            board.appendChild(flyingElement);
+    cancelBtn.addEventListener("click", () => {
+        taskForm.style.display = "none";
+    });
+
+    addTagButton.addEventListener("click", () => {
+        if (newTagInput.value.trim() !== "") {
+            const newOption = document.createElement("option");
+            newOption.value = newTagInput.value.trim();
+            newOption.textContent = newTagInput.value.trim();
+            taskTags.appendChild(newOption);
+            newTagInput.value = "";
         }
     });
-});
 
-function attachDragEvents(target) {
-    target.addEventListener('dragstart', () => {
-        target.classList.add('flying');
-        setTimeout(() => target.style.display = "none", 0); 
+    addLabelButton.addEventListener("click", () => {
+        if (newLabelInput.value.trim() !== "") {
+            const newOption = document.createElement("option");
+            newOption.value = newLabelInput.value.trim();
+            newOption.textContent = newLabelInput.value.trim();
+            taskLabels.appendChild(newOption);
+            newLabelInput.value = "";
+        }
     });
 
-    target.addEventListener('dragend', () => {
-        target.classList.remove('flying');
-        target.style.display = "block";
-    });
-}
-
-const newTaskButton = document.getElementById("new-task");
-    const taskForm = document.querySelector(".task-form");
-    const closeButton = document.querySelector(".close");
-    const cancelButton = document.querySelector(".task-form button:last-of-type");
-    const container = document.querySelector(".container");
-
-    function showTaskForm() {
-        taskForm.classList.add("show");
-        container.style.display = "none"; 
-    }
-
-    function closeTaskForm() {
-        taskForm.classList.remove("show");
-        setTimeout(() => {
-            taskForm.style.display = "none";
-            container.style.display = "block";
-        }, 300);
-    }
-
-    newTaskButton.addEventListener("click", function () {
-        taskForm.style.display = "block";
-        setTimeout(showTaskForm, 10);
-    });
-
-    closeButton.addEventListener("click", closeTaskForm);
-    cancelButton.addEventListener("click", (e) => {
+    saveBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        closeTaskForm();
+        if (taskTitle.value.trim() === "" || taskDesc.value.trim() === "") {
+            alert("Please fill in all fields");
+            return;
+        }
+
+        const newTask = createTaskElement(taskTitle.value, taskDesc.value, taskTags.value, taskLabels.value, taskDate.value);
+        document.getElementById("todo-board").appendChild(newTask);
+        taskForm.style.display = "none";
+        taskTitle.value = "";
+        taskDesc.value = "";
+        taskTags.value = "analytics";
+        taskLabels.value = "urgent";
+        taskDate.value = "";
+    });
+
+    function createTaskElement(title, desc, tag, label, date) {
+
+        const task = document.createElement("div");
+        task.classList.add("card-container");
+        task.innerHTML = `
+            <div class="card-body" draggable="true">
+                <p class="title">${title} <span class="tags">#${tag}</span></p>
+                <p class="desc">${desc}</p>
+                <p>
+                    <span class="current-date"><i class="fa-solid fa-calendar-days"></i> ${date}</span>
+                    <span id="tags"><i class="fa-solid fa-tag"></i> ${label}</span>
+                    
+                </p>
+            </div>
+            <div class="card-btn">
+                <button class="edit"><i class="fa-solid fa-pencil edit"></i></button>
+                <button class="delete"><i class="fa-solid fa-trash delete"></i></button>
+            </div>
+        `;
+
+        const cardBody = task.querySelector(".card-body");
+
+        task.querySelector(".delete").addEventListener("click", () => {
+            task.remove();
+        });
+
+        task.querySelector(".edit").addEventListener("click", () => {
+            taskTitle.value = title;
+            taskDesc.value = desc;
+            taskTags.value = tag;
+            taskLabels.value = label;
+            taskDate.value = date;
+            taskForm.style.display = "block";
+            task.remove();
+        });
+
+        cardBody.addEventListener("dragstart", (e) => {
+            draggedTask = task;
+            setTimeout(() => task.style.display = "none", 0);
+            e.dataTransfer.effectAllowed = "move";
+        });
+
+        cardBody.addEventListener("dragend", () => {
+            setTimeout(() => task.style.display = "block", 0);
+            draggedTask = null;
+        });
+
+        return task;
+    }
+
+    boards.forEach(board => {
+        board.addEventListener("dragover", (e) => {
+            e.preventDefault();
+        });
+
+        board.addEventListener("drop", () => {
+            if (draggedTask) {
+                board.appendChild(draggedTask);
+            }
+        });
     });
