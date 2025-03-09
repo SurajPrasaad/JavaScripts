@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <!-- Navigation Sidebar -->
     <div class="nav-slide">
         <h4 class="nav-item active"><i class="fa-solid fa-list-check"></i> Tasks</h4>
         <h4 class="nav-item"><i class="fa-solid fa-columns"></i> Kanban Board</h4>
@@ -21,79 +22,59 @@
         </h4>
     
         <!-- Search & Sort Dropdown -->
-        <div class="dropdown-menu">
-            <input type="text" id="search-task" placeholder="🔍 Search tasks...">
-            <select id="sort-tasks">
-                <option value="all">All Tasks</option>
-                <option value="latest">Latest</option>
-                <option value="oldest">Oldest</option>
-                <option value="az">A-Z</option>
-                <option value="za">Z-A</option>
+        <div class="task-controls">
+            <input type="text" id="search-input" placeholder="Search tasks..." />
+        
+            <select id="sort-dropdown">
+                <option value="default">Sort By</option>
+                <option value="date-new">Date (Newest First)</option>
+                <option value="date-old">Date (Oldest First)</option>
+                <option value="title-asc">Title (A-Z)</option>
+                <option value="title-desc">Title (Z-A)</option>
             </select>
         </div>
+        
     </div>
     
+    <!-- Main Container -->
     <div class="container">
-        <button id="new-task">New Task</button>
+        <button id="new-task" class="primary-btn">+ New Task</button>
+
+        <!-- Kanban Boards -->
         <div class="board-container">
             <div class="board" id="todo-board">
-                <h3><i class="fa-sharp-duotone fa-solid fa-clock"></i>Todo</h3>
-                <div class="card-container">
-                    <div class="card-body" draggable="true">
-                        <p class="title">Update Sale Report<span class="tags">#SalesDashboard</span></p>
-                        <p class="desc">Add The latest Services Machines</p>
-                        <p>
-                            <span class="current-date"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i>
-                                30/12/2025</span>
-                            <span id="tags"><i class="fa-sharp-duotone fa-solid fa-tag"></i>Analytics</span>
-                        </p>
-                    </div>
-                    <div class="card-btn">
-                        <button><i class="fa-sharp-duotone fa-solid fa-pencil edit"></i></button>
-                        <button><i class="fa-sharp-duotone fa-solid fa-trash delete"></i></button>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="card-body" draggable="true">
-                        <p class="title">Update Sale Report<span>#SalesDashboard</span></p>
-                        <p class="desc">Add The latest Services Machines</p>
-                        <p>
-                            <span class="current-date"><i class="fa-sharp-duotone fa-solid fa-calendar-days"></i>
-                                30/12/2025</span>
-                            <span id="tags"><i class="fa-sharp-duotone fa-solid fa-tag"></i>Analytics</span>
-                        </p>
-                    </div>
-                    <div class="card-btn">
-                        <button><i class="fa-sharp-duotone fa-solid fa-pencil edit"></i></button>
-                        <button><i class="fa-sharp-duotone fa-solid fa-trash delete"></i></button>
-                    </div>
-                </div>
+                <h3><i class="fa-solid fa-clock"></i> Todo <span class="task-count">(0)</span></h3>
             </div>
             <div class="board" id="progress-board">
-                <h3><i class="fa-sharp-duotone fa-solid fa-repeat"></i>In Progress</h3>
+                <h3><i class="fa-solid fa-spinner"></i> In Progress <span class="task-count">(0)</span></h3>
             </div>
             <div class="board" id="success-board">
-                <h3><i class="fa-sharp-duotone fa-solid fa-circle-check"></i>Done</h3>
+                <h3><i class="fa-solid fa-circle-check"></i> Done <span class="task-count">(0)</span></h3>
             </div>
             <div class="board" id="archived-board">
-                <h3><i class="fa-sharp-duotone fa-solid fa-box-archive"></i>Archived</h3>
+                <h3><i class="fa-solid fa-box-archive"></i> Archived <span class="task-count">(0)</span></h3>
             </div>
         </div>
     </div>
+
+    <!-- Task Form (Hidden by Default) -->
     <div class="task-form">
         <div class="form-container">
-            <h3>Create New Task <span class="close">X</span></h3>
+            <h3>Create New Task <span class="close" role="button" aria-label="Close form">✖</span></h3>
             <form>
+                <!-- Task Title -->
                 <div class="input-group">
                     <label for="task-title">Task Title</label>
                     <input type="text" id="task-title" placeholder="Enter task title" required>
                 </div>
-    
+
+                <!-- Task Description -->
                 <div class="input-group">
                     <label for="task-desc">Task Description</label>
                     <textarea id="task-desc" placeholder="Enter task description" required></textarea>
                 </div>
-    
+
+                <!-- Task Tags -->
                 <div class="input-group">
                     <label for="task-tags">Task Tags</label>
                     <div class="select-container">
@@ -104,10 +85,11 @@
                             <option value="testing">Testing</option>
                         </select>
                         <input type="text" id="new-tag" placeholder="Add new tag">
-                        <button type="button" id="add-tag">+</button>
+                        <button type="button" id="add-tag" class="small-btn">+</button>
                     </div>
                 </div>
-    
+
+                <!-- Task Labels -->
                 <div class="input-group">
                     <label for="task-labels">Task Labels</label>
                     <div class="select-container">
@@ -117,15 +99,17 @@
                             <option value="low-priority">Low Priority</option>
                         </select>
                         <input type="text" id="new-label" placeholder="Add new label">
-                        <button type="button" id="add-label">+</button>
+                        <button type="button" id="add-label" class="small-btn">+</button>
                     </div>
                 </div>
-    
+
+                <!-- Task Due Date -->
                 <div class="input-group">
                     <label for="task-date">Task Date</label>
                     <input type="date" id="task-date1" required>
                 </div>
-    
+
+                <!-- Form Buttons -->
                 <div class="btn-group">
                     <button type="submit" class="save-btn">Save</button>
                     <button type="button" class="cancel-btn">Cancel</button>
@@ -133,7 +117,7 @@
             </form>
         </div>
     </div>
-    
+
     <script src="app.js"></script>
 </body>
 

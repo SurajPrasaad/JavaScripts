@@ -227,66 +227,6 @@ body {
     }
 }
 
-@media (max-width:768px){
-    body{
-        flex-direction: column;
-    }
-    .nav-slide {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 15px;
-        border-right: none;
-        border-bottom: 1px solid black;
-    }
-    .container {
-        width: 100%;
-        padding: 10px;
-    }
-    #new-task {
-        width: 100%;
-        text-align: center;
-    }
-    .board-container{
-        flex-direction: column;
-        gap: 15px;  
-    }
-    .board {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-    }
-
-    .card-container {
-        gap: 5px;
-    }
-
-    .card-body {
-        padding: 6px;
-    }
-    .card-body .title {
-        font-size: 14px;
-    }
-
-    .card-body .desc {
-        font-size: 10px;
-    }
-
-    .card-body .current-date {
-        font-size: 8px;
-        padding: 2px;
-        margin: 10px;
-    }
-
-    .card-body #tags {
-        font-size: 8px;
-        margin-left: 20px;
-    }
-    .card-btn button {
-        padding: 5px;
-    }
-}
 
 .task-form {
     position: fixed;
@@ -400,3 +340,158 @@ body {
 }
 
 
+.nav-slide {
+    display: flex;
+    flex-direction: column;
+    background: #2C3E50;
+    padding: 15px;
+    width: 220px; /* Slightly wider for better input field fit */
+    min-width: 200px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Navbar Items */
+.nav-item {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: #34495E;
+}
+
+/* 🔽 Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    background: #1F2A36;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.dropdown-menu input, .dropdown-menu select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+/* Ensure dropdown menu stays inside navbar */
+.dropdown-toggle:hover + .dropdown-menu {
+    display: flex;
+}
+
+/* 📌 Main Content Container */
+.container {
+    background-color: #FCF8F3;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+    gap: 10px;
+}
+
+/* 🔹 Task Controls */
+.task-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    gap: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+}
+
+/* 🔍 Search Input */
+#search-input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s ease;
+    min-width: 20px;
+    max-width: 250px; /* Prevents overflowing */
+}
+
+#search-input:focus {
+    border-color: #0080ff;
+    box-shadow: 0 0 5px rgba(0, 128, 255, 0.5);
+}
+
+/* ⏬ Sorting Dropdown */
+#sort-dropdown {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    background: white;
+    min-width: 20px;
+    transition: all 0.3s ease;
+}
+
+#sort-dropdown:hover {
+    border-color: #0080ff;
+}
+
+/* 🔹 Task Control Buttons */
+.task-controls button {
+    padding: 8px 12px;
+    background: #0080ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.task-controls button:hover {
+    background: #005bb5;
+}
+
+
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack the navbar and content */
+    }
+
+    .nav-slide {
+        width: 100%; /* Full width navbar */
+        height: auto; /* Adjust height as needed */
+        min-width: auto;
+        overflow-y: visible; /* Show all content */
+    }
+
+    .board-container {
+        flex-direction: column; /* Stack the boards */
+        height: auto;
+    }
+
+    .task-controls {
+        flex-direction: column; /* Stack the task control elements */
+        align-items: stretch; /* Full width items */
+    }
+
+    #search-input,
+    #sort-dropdown {
+        width: 100%; /* Full width search and dropdown */
+        margin-bottom: 10px;
+    }
+}
